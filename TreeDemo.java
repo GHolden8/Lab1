@@ -216,7 +216,19 @@ class Node{
 	   with a largest key
 	   */
 	   public int getMax(Node root){
-         return 0; 
+         Stack<Node> stack = new Stack<Node>();
+        Node node = root; 
+       
+       while(node != null){
+           
+         
+             stack.push(node);
+             node = node.right; 
+              
+        }
+     
+      node = stack.pop();
+      return node.value; 
 	   }
 	   
 	   

@@ -1,3 +1,4 @@
+import java.util.*;
 class Node{
 	   int value;
 	   Node left, right;
@@ -58,7 +59,28 @@ class Node{
 	   Prints the value of every node preorder
 	   */
 	   public void preOrderTraversal(Node root){
-		//implement in here
+		
+        //Created a stack to hold values as visited
+        Stack<Node> stack = new Stack<Node>();
+        Node node = root; 
+       
+       while(node != null || stack.empty() == false){
+        while(node != null){
+           
+             //collects node and prints value as soon as it comes across
+             stack.push(node);
+             System.out.print(node.value + " ");
+             node = node.left; 
+              
+        }
+        //gathers right side and prints as soon as comes across
+        node = stack.peek(); 
+        stack.pop(); 
+        node = node.right; 
+        
+       }
+
+
 		   
 	   }
 
@@ -89,7 +111,7 @@ class Node{
 	   with a specific value
 	   */
 	   public boolean find(Node root, int key){
-		 //implement in here
+		 return true;
 		  
 	   }
 	   
@@ -100,7 +122,7 @@ class Node{
 	   with a smallest key
 	   */
 	   public int getMin(Node root){
-         //implement in here
+         return 0;
 	      
 	   }
 	  
@@ -111,7 +133,7 @@ class Node{
 	   with a largest key
 	   */
 	   public int getMax(Node root){
-         //implement in here
+         return 0; 
 	   }
 	   
 	   
@@ -164,9 +186,25 @@ class Node{
 	      t1.insert(90);
 	      t1.insert(22);
 	            
+	     
+         System.out.print("pre-order :   ");
+         t1.preOrderTraversal(t1.root);
+         System.out.println();
+               
 	      System.out.print("in-order :   ");
 	      t1.inOrderTraversal(t1.root);
 	      System.out.println();
+         
+         System.out.print("post-order :   ");
+         t1.postOrderTraversal(t1.root);
+         System.out.println();
+         
+         System.out.println(t1.find(t1.root, 9));
+	      
+         System.out.println(t1.getMin(t1.root)); 
+         
+         System.out.println(t1.getMax(t1.root)); 
+	    
 	           
 	      
 	   }  

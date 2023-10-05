@@ -161,7 +161,29 @@ class Node{
 	   with a specific value
 	   */
 	   public boolean find(Node root, int key){
-		 return true;
+		 Stack<Node> stack = new Stack<Node>();
+        Node node = root; 
+       
+       while(node != null || stack.empty() == false){
+        while(node != null){
+           
+             //gathers nodes and values onto stack
+             stack.push(node);
+             node = node.left; 
+              
+        }
+        //Checks if value is key if not continues
+        node = stack.peek();
+        stack.pop(); 
+        if(node.value == key){
+          return true;
+        }
+        node = node.right; 
+       }
+      //once stack is empty and key was not matched returns false
+	   return false;
+	   
+
 		  
 	   }
 	   

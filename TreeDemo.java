@@ -118,7 +118,39 @@ class Node{
 	   */
 	  
 	   public void postOrderTraversal(Node root){
-         //implement in here
+        
+        //Created two stacks to keep track of nodes and visits to the nodes
+        Stack<Integer> count = new Stack<Integer>();       
+        Stack<Node> stack = new Stack<Node>();
+        
+        Node node = root; 
+        stack.push(node);
+        count.push(0);
+       while(stack.empty() == false ){             
+           int c = count.pop();
+           node = stack.peek();
+           
+           //first visit means left and right have not been check for null
+           if(c == 0){
+               count.push(1); 
+                 if(node.left != null){
+                    stack.push(node.left);
+                    count.push(0); 
+                 }
+           //left has been checked and now right
+           }else if(c==1){
+                count.push(2);
+                 if(node.right != null){
+                    stack.push(node.right);
+                    count.push(0);
+                 }
+           }else{
+              //would mean the value of 2 came out of count stack and that means the value can be printed
+              stack.pop(); 
+              System.out.print(node.value + " "); 
+           }
+          
+       }
 		   
 	   }
 	   

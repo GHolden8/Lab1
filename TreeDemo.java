@@ -194,8 +194,19 @@ class Node{
 	   with a smallest key
 	   */
 	   public int getMin(Node root){
-         return 0;
-	      
+         Stack<Node> stack = new Stack<Node>();
+        Node node = root; 
+       
+       while(node != null){
+           
+         
+             stack.push(node);
+             node = node.left; 
+              
+        }
+     
+      node = stack.pop();
+      return node.value; 	      
 	   }
 	  
 	  

@@ -90,7 +90,25 @@ class Node{
 	   in-order traversal
 	   */
 	   public void inOrderTraversal(Node root){
-	      //implement in here
+	          
+        Stack<Node> stack = new Stack<Node>();
+        Node node = root; 
+       
+       while(node != null || stack.empty() == false){
+        while(node != null){
+           
+             //gathers nodes and values onto stack
+             stack.push(node);
+             node = node.left; 
+              
+        }
+        //prints and collects right side value as they are popped off stack and prints in order. 
+        node = stack.peek();
+        stack.pop(); 
+        System.out.print(node.value + " "); 
+        node = node.right; 
+       }
+
 	   }
 	   
 	   
